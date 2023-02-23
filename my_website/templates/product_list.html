@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- slider link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="https://favicon.ico">
+    <!-- main problem of slider -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="manifest" href="https://manifest.json">
+
+    {% comment %} css link in django {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'media/styles.css' %}">
+  </head>
+  <body>
+      <header>
+
+      </header>
+      <section>
+        <a href="/add_product" class="btn btn-primary">Add Product</a>
+            {% comment %} button on display table {% endcomment %}
+            <table class="table table-striped">
+              <tr>
+                <th>Serial</th>
+                <th>Product name</th>
+                <th>Description</th>
+                <th>Selling price</th>
+                <th>Mrp</th>
+                <th>Image</th>
+                <th>Delete</th>
+                <th>Edit</th>
+              </tr>
+              {% for da in data %}
+              <tr>
+                <td>{{da.id}}</td>
+                <td>{{da.product_name}}</td>
+                <td>{{da.description}}</td>
+                <td>{{da.selling_price}}</td>
+                <td>{{da.mrp}}</td>
+                <td>{{da.image}}</td>
+                <td>
+                  <a class="btn btn-danger" href="/delete/{{da.id}}"> Delete</a>
+                </td>
+                <td>
+                  <a class="btn btn-primary" href="/edit/{{da.id}}">
+                  Edit</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+        </div>
+      </section>
+      <br>
+      <br>
+      <footer>
+
+      </footer>
+  </body>
+</html>
